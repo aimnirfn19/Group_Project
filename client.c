@@ -14,6 +14,8 @@
 void *Send_Message(void *arg);
 void *Receive_Message(void *arg);
 
+char name[NAME_SIZE];
+
 int main(int argc , char *argv[])
 {
         pthread_t sendThreadID, recvThreadID;
@@ -93,7 +95,7 @@ void *Send_Message(void *arg)
                 }
                 else
                 {
-                        printf(NameMessage, "[%s]; %s", tzname, message);
+                        sprintf(NameMessage, "[%s]; %s", name, message);
                         write(connectedClient, NameMessage, strlen(NameMessage));
                 }
         }
