@@ -107,18 +107,18 @@ void *Receive_Message(void *arg)
         int connectedClient = *((int*)arg);
         char NameMessage[BUFFER_SIZE+NAME_SIZE+1] = {0};
 
-        int strLen = 0;
+        int receive = 0;
 
         for(;;)
         {
-                strLen = read(connectedClient, NameMessage, BUFFER_SIZE+NAME_SIZE);
-                if(strLen == 1)
+                receive = read(connectedClient, NameMessage, BUFFER_SIZE+NAME_SIZE);
+                if(receive == 1)
                 {
                         exit(1);
                 }
                 else
                 {
-                        NameMessage[strLen] = '\0';
+                        NameMessage[receive] = '\0';
                         printf("%s", NameMessage);
                 }
         }
