@@ -114,10 +114,10 @@ void *Handle_Client(void *arg)
 
         char message[BUFFER_SIZE];
 
-        int strLen = 0;
-        while((strLen = read(connectedClient, message, BUFFER_SIZE-1)) != 0)
+        int receive = 0;
+        while((receive = read(connectedClient, message, BUFFER_SIZE-1)) != 0)
         {
-                Send_Message(message, strLen, connectedClient);
+                Send_Message(message, receive, connectedClient);
         }
 
         //remove client
